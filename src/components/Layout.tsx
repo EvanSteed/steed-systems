@@ -13,10 +13,9 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-50 backdrop-blur bg-black/80 border-b border-[#2a2a2e]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between relative">
-          <Link to="/" className="flex items-center gap-4 font-bold text-xl z-10">
-            <img src="/logo.png" alt="Steed Systems" className="h-16 w-16 object-contain" />
-            <span className="text-white tracking-wide leading-tight text-2xl">STEED<br/>SYSTEMS</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-32 flex items-center justify-between relative">
+          <Link to="/" className="flex items-center z-10">
+            <img src="/headerlogo-small.png" alt="Steed Systems" className="h-24 w-auto object-contain" />
           </Link>
           <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {nav.map(n => (
