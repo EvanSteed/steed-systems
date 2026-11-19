@@ -13,7 +13,7 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-50 backdrop-blur bg-black/80 border-b border-[#2a2a2e]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-32 flex items-center justify-between relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-32 flex flex-col md:flex-row items-center justify-between relative">
           <Link to="/" className="flex items-center z-10">
             <img src="/headerlogo-small.png" alt="Steed Systems" className="h-24 w-auto object-contain" />
           </Link>
@@ -25,7 +25,7 @@ export function Layout() {
           <div className="hidden md:block z-10">
             <Link to="/assessment" className="btn-primary text-sm">Free Assessment</Link>
           </div>
-          <button className="md:hidden text-white" onClick={()=>setOpen(!open)} aria-label="menu">{open?<X/>:<Menu/>}</button>
+          <button className="md:hidden text-white mt-2" onClick={()=>setOpen(!open)} aria-label="menu">{open?<X/>:<Menu/>}</button>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
         {open && (
