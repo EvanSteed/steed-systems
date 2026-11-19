@@ -25,11 +25,11 @@ export function Layout() {
           <div className="hidden md:block z-10">
             <Link to="/assessment" className="btn-primary text-sm">Free Assessment</Link>
           </div>
-          <button className="md:hidden text-white mt-2" onClick={()=>setOpen(!open)} aria-label="menu">{open?<X/>:<Menu/>}</button>
+          <button className="md:hidden text-white -mt-[10px]" onClick={()=>setOpen(!open)} aria-label="menu">{open?<X size={32}/>:<Menu size={32}/>}</button>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
         {open && (
-          <div className="md:hidden border-t border-[#2a2a2e] bg-black/95 px-4 py-4 flex flex-col gap-3">
+          <div className="md:hidden border-t border-[#2a2a2e] bg-black/95 px-4 py-4 flex flex-col gap-3 items-center text-center">
             {nav.map(n=>(
               <Link key={n.to} to={n.to} onClick={()=>setOpen(false)} className="text-zinc-200">{n.label}</Link>
             ))}
