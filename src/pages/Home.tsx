@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import OnlinePresenceDiagram from '../components/OnlinePresenceDiagram'
 
 const services = [
   { title: 'Website Development', desc: 'Custom business websites, landing pages and redesigns built for speed, clarity and conversion.' },
@@ -13,11 +14,13 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-16 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-8 text-center">
           <h1 className="text-6xl sm:text-7xl leading-tight mb-6 font-bold">digital solutions.<br/>built for business.</h1>
-          <p className="text-[var(--muted)] text-xl mb-10 max-w-2xl mx-auto">Helping local Perth businesses build a stronger online presence through website development, digital consulting and practical technology solutions.</p>
+          <p className="text-[var(--muted)] text-xl mb-4 max-w-2xl mx-auto">Helping local Perth businesses build a stronger online presence through website development, digital consulting and practical technology solutions.</p>
         </div>
       </section>
+
+      <OnlinePresenceDiagram />
 
       <section className="bg-[#141416] py-16 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -51,7 +54,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <h2 className="text-3xl font-bold mb-8 text-center">Why choose Steed Systems</h2>
         <ul className="flex flex-col gap-4 mx-auto w-fit">
-          {['Direct communication with the business owner','Personalised solutions, not generic packages','Transparent, accessible pricing','Practical recommendations based on your business','Ongoing support and long-term relationships','Combines web, marketing, photography and AI'].map(i=>(
+          {['Direct communication with someone who cares about your business results','Personalised solutions, not generic packages','Transparent, accessible pricing','Practical recommendations based on your business','Ongoing support and long-term relationships','Combines web, marketing, photography and AI'].map(i=>(
             <li key={i} className="flex items-center gap-3 text-[var(--muted)] whitespace-nowrap"><CheckCircle2 className="mt-0.5 shrink-0" size={20}/>{i}</li>
           ))}
         </ul>
