@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import OnlinePresenceDiagram from '../components/OnlinePresenceDiagram'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import useSEO from '../lib/useSEO'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -17,6 +18,7 @@ const services = [
 ]
 
 export default function Home() {
+  useSEO('Steed Systems | Website Development & Digital Consulting Perth', 'Website development, digital consulting and AI automation for small businesses in Melville, Palmyra, Bicton, Attadale, Applecross, Fremantle and Perth.')
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
