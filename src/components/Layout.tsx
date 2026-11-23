@@ -44,7 +44,6 @@ export function Layout() {
           </div>
           <button className="md:hidden text-white -mt-[10px]" onClick={()=>setOpen(!open)} aria-label="menu">{open?<X size={32}/>:<Menu size={32}/>}</button>
         </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
         {open && (
           <div className="md:hidden border-t border-[#2a2a2e] bg-black/95 px-4 py-4 flex flex-col gap-3 items-center text-center">
             {nav.map(n=>(
