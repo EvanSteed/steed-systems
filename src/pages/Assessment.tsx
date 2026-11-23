@@ -31,7 +31,7 @@ export default function Assessment() {
   )
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
-      <h1 className="text-4xl font-bold mb-3 text-center">Is Your Online Presence Working for Your Business?</h1>
+      <h1 className="text-4xl font-bold mb-3 text-center">Is your online presence working for your business?</h1>
       <p className="text-[var(--muted)] mb-8">Your website and digital presence are often the first impression potential customers have. Find out what's working, what's holding you back and where you could improve. Complimentary, no obligation.</p>
       <div className="card p-6 mb-8 text-sm text-[var(--muted)]">
         <div className="font-semibold text-[var(--text)] mb-2">The assessment examines:</div>
