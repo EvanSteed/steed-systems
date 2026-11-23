@@ -39,3 +39,7 @@ h1,h2,h3,h4 { font-family: 'Rajdhani', system-ui, sans-serif; letter-spacing: 0.
 
 .hero-word { opacity: 0; }
 header.scrolled { background: #0a0a0b; }
+
+.field-input { width:100%; background:#141416; border:1px solid #2a2a2e; border-radius:8px; padding:.5rem .75rem; color:#f4f4f5; outline:none; font-family:inherit; font-size:1rem; }
+.field-input:focus { border-color:#e11d48; }
+textarea.field-input { resize: vertical; }
