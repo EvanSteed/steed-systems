@@ -10,12 +10,17 @@ export default function Contact() {
     if (!form.desc.trim()) e.desc='Required'
     return e
   }
-  const submit = (ev: React.FormEvent) => {
+  const submit = async (ev: React.FormEvent) => {
     ev.preventDefault()
     const e = validate()
     setErrors(e)
     if (Object.keys(e).length) return
-    setStatus('Thanks! Your enquiry has been received.')
+    try {
+      await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
+      setStatus('Thanks! Your enquiry has been received.')
+    } catch {
+      setStatus('Sorry, something went wrong.')
+    }
   }
   const field = (k: keyof typeof form, label: string, type='text', required=false) => (
     <div className="flex flex-col">

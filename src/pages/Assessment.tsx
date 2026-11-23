@@ -10,12 +10,17 @@ export default function Assessment() {
     if (!form.business.trim()) e.business='Required'
     return e
   }
-  const submit = (ev: React.FormEvent) => {
+  const submit = async (ev: React.FormEvent) => {
     ev.preventDefault()
     const e = validate()
     setErrors(e)
     if (Object.keys(e).length) return
-    setStatus('Thanks! Your assessment request has been received. We will be in touch.')
+    try {
+      await fetch('/api/assessment', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
+      setStatus('Thanks! Your assessment request has been received. We will be in touch.')
+    } catch {
+      setStatus('Sorry, something went wrong.')
+    }
   }
   const field = (k: keyof typeof form, label: string, type='text', required=false) => (
     <div className="flex flex-col">
