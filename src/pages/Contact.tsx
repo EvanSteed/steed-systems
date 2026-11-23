@@ -18,7 +18,7 @@ export default function Contact() {
     setStatus('Thanks! Your enquiry has been received.')
   }
   const field = (k: keyof typeof form, label: string, type='text', required=false) => (
-    <div>
+    <div className="flex flex-col">
       <label className="field-label">{label}{required?' *':''}</label>
       <input type={type} value={form[k]} onChange={e=>setForm({...form,[k]:e.target.value})} className="field-input" />
       {errors[k] && <div className="field-error">{errors[k]}</div>}
@@ -27,16 +27,18 @@ export default function Contact() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
       <h1 className="text-4xl font-bold mb-6">Contact</h1>
-      <p className="text-[var(--muted)] text-sm mb-8">Contact details available on request.</p>
-      <form onSubmit={submit} className="space-y-4">
-        {field('name','Name','text',true)}
-        {field('business','Business name')}
-        {field('email','Email','email',true)}
-        {field('phone','Phone')}
-        {field('website','Website')}
-        {field('services','Services required')}
-        {field('budget','Estimated budget')}
-        <div>
+      <p className="text-[var(--muted)] text-sm mb-8">Fill out the form below for general enquiries.</p>
+      <form onSubmit={submit} className="card p-6 space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          {field('name','Name','text',true)}
+          {field('business','Business name')}
+          {field('email','Email','email',true)}
+          {field('phone','Phone')}
+          {field('website','Website')}
+          {field('services','Services required')}
+          {field('budget','Estimated budget')}
+        </div>
+        <div className="flex flex-col">
           <label className="field-label">Project description *</label>
           <textarea value={form.desc} onChange={e=>setForm({...form,desc:e.target.value})} rows={4} className="field-input" />
           {errors.desc && <div className="field-error">{errors.desc}</div>}

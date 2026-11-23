@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Globe, BarChart3, Megaphone, Camera, Cpu } from 'lucide-react'
+import { Globe, BarChart3, Megaphone, Camera, Cpu, Briefcase } from 'lucide-react'
 
 const groups = [
   { icon: Globe, title: 'Website Development', items: ['Custom business websites','Landing pages','Website redesigns','Mobile-responsive development','Contact forms and lead generation','Hosting and deployment','Performance optimisation'] },
   { icon: BarChart3, title: 'Digital Consulting', items: ['Digital presence assessments','Online business strategy','Digital workflow improvements','Technology recommendations','Website and conversion optimisation','Ongoing digital support'] },
   { icon: Megaphone, title: 'Digital Marketing', items: ['Search engine optimisation','Google Business Profile optimisation','Social media strategy','Content planning','Online visibility improvements'] },
-  { icon: Camera, title: 'Photography & Content', items: ['Commercial photography','Business and product photography','Social media content creation','AI-assisted creative production','Marketing graphics and promotional material'] },
+  { icon: Briefcase, title: 'Business Analysis', items: ['Operational efficiency','Growth and revenue analysis','Customer experience','Process improvement'] },
+  { icon: Camera, title: 'Photography & Content', items: ['Photography','Creative production','Social media content','Marketing graphics and promotional material'] },
   { icon: Cpu, title: 'AI & Automation', items: ['AI-powered business workflows','Administrative automation','AI assistants and knowledge systems','Customer enquiry automation','Practical AI implementation'] },
 ]
 
