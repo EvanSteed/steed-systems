@@ -23,6 +23,11 @@ export default function Home() {
       gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
         gsap.from(el, { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } })
       })
+      ScrollTrigger.batch('.card', {
+        onEnter: (batch) => gsap.to(batch, { opacity: 1, scale: 1, y: 0, stagger: 0.12, duration: 0.6, ease: 'power3.out', overwrite: true }),
+        start: 'top 88%',
+      })
+      gsap.set('.card', { opacity: 0, scale: 0.96, y: 20 })
       gsap.to('.logo-a', { opacity: 0, duration: 2.2, repeat: -1, yoyo: true, ease: 'power2.inOut' })
       gsap.to('.logo-b', { opacity: 1, duration: 2.2, repeat: -1, yoyo: true, ease: 'power2.inOut' })
     }, ref)

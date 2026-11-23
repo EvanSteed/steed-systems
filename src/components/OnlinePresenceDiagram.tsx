@@ -29,7 +29,7 @@ const NODES: NodeItem[] = [
   {
     id: "growth",
     title: "Drive Growth",
-    description: "Scalable conversion & measurable momentum",
+    description: "Increased enquiries and better conversion leads to measurable growth",
     position: "bottom-right",
   },
 ];
