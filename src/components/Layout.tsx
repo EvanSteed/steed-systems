@@ -29,14 +29,14 @@ export function Layout() {
   ]
   return (
     <div className="min-h-screen flex flex-col">
-      <header ref={headerRef} className="sticky top-0 z-50 backdrop-blur bg-black/80 border-b border-[#2a2a2e] transition-all duration-300 [&.scrolled]:h-16">
+      <header ref={headerRef} className="sticky top-0 z-50 backdrop-blur bg-transparent border-b border-transparent transition-all duration-300 [&.scrolled]:bg-black/80 [&.scrolled]:border-[#2a2a2e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-32 flex flex-col md:flex-row items-center justify-between relative">
           <Link to="/" className="flex items-center z-10">
             <img src="/headerlogo-small.png" alt="Steed Systems" className="h-24 w-auto object-contain" />
           </Link>
           <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {nav.map(n => (
-              <Link key={n.to} to={n.to} className={`text-sm font-medium tracking-wide transition-colors ${loc.pathname===n.to?'text-red-400':'text-zinc-300 hover:text-white'}`}>{n.label}</Link>
+              <Link key={n.to} to={n.to} className={`text-base font-bold tracking-wide transition-colors ${loc.pathname===n.to?'text-red-400':'text-zinc-200 hover:text-white'}`}>{n.label}</Link>
             ))}
           </nav>
           <div className="hidden md:block z-10">
