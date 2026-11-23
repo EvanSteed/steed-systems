@@ -23,6 +23,8 @@ export default function Home() {
       gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
         gsap.from(el, { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } })
       })
+      gsap.to('.logo-a', { opacity: 0, duration: 2.2, repeat: -1, yoyo: true, ease: 'power2.inOut' })
+      gsap.to('.logo-b', { opacity: 1, duration: 2.2, repeat: -1, yoyo: true, ease: 'power2.inOut' })
     }, ref)
     return () => ctx.revert()
   }, [])
@@ -31,6 +33,10 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-8 text-center">
           <h1 className="text-6xl sm:text-7xl leading-tight mb-6 font-bold">It's time to update your business.</h1>
+          <div className="relative mx-auto mb-6 w-40 h-40">
+            <img src="/logo.png" className="logo-a absolute inset-0 w-full h-full object-contain" alt="" />
+            <img src="/logo2.png" className="logo-b absolute inset-0 w-full h-full object-contain opacity-0" alt="" />
+          </div>
           <p className="text-[var(--muted)] text-xl mb-4 max-w-2xl mx-auto">Helping local Perth businesses build a stronger online presence through website development, digital consulting and practical technology solutions.</p>
         </div>
       </section>
