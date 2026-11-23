@@ -18,7 +18,7 @@ export default function Assessment() {
     setStatus('Thanks! Your assessment request has been received. We will be in touch.')
   }
   const field = (k: keyof typeof form, label: string, type='text', required=false) => (
-    <div>
+    <div className="flex flex-col">
       <label className="field-label">{label}{required?' *':''}</label>
       <input type={type} value={form[k]} onChange={e=>setForm({...form,[k]:e.target.value})} className="field-input" />
       {errors[k] && <div className="field-error">{errors[k]}</div>}
@@ -26,29 +26,33 @@ export default function Assessment() {
   )
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
-      <h1 className="text-4xl font-bold mb-3">Is Your Online Presence Working for Your Business?</h1>
+      <h1 className="text-4xl font-bold mb-3 text-center">Is Your Online Presence Working for Your Business?</h1>
       <p className="text-[var(--muted)] mb-8">Your website and digital presence are often the first impression potential customers have. Find out what's working, what's holding you back and where you could improve. Complimentary, no obligation.</p>
-      <div className="card p-4 mb-8 text-sm text-[var(--muted)]">
+      <div className="card p-6 mb-8 text-sm text-[var(--muted)]">
         <div className="font-semibold text-[var(--text)] mb-2">The assessment examines:</div>
-        <ol className="list-decimal list-inside space-y-1">
+        <ol className="list-decimal list-inside space-y-1 columns-2">
           <li>Website design and usability</li><li>Mobile responsiveness</li><li>Website functionality</li><li>Search engine visibility</li><li>Google Business Profile</li><li>Social media presence</li><li>Customer enquiry pathways</li><li>Opportunities for improvement</li>
         </ol>
       </div>
-      <form onSubmit={submit} className="space-y-4">
-        {field('name','Name', 'text', true)}
-        {field('business','Business name', 'text', true)}
-        {field('email','Email', 'email', true)}
-        {field('url','Website URL')}
-        {field('industry','Industry')}
-        <div>
-          <label className="field-label">Main business challenge</label>
-          <textarea value={form.challenge} onChange={e=>setForm({...form,challenge:e.target.value})} rows={3} className="field-input" />
+      <form onSubmit={submit} className="card p-6 space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          {field('name','Name', 'text', true)}
+          {field('business','Business name', 'text', true)}
+          {field('email','Email', 'email', true)}
+          {field('url','Website URL')}
+          {field('industry','Industry')}
         </div>
-        <div>
-          <label className="field-label">Additional information</label>
-          <textarea value={form.info} onChange={e=>setForm({...form,info:e.target.value})} rows={3} className="field-input" />
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="flex flex-col">
+            <label className="field-label">Main business challenge</label>
+            <textarea value={form.challenge} onChange={e=>setForm({...form,challenge:e.target.value})} rows={3} className="field-input" />
+          </div>
+          <div className="flex flex-col">
+            <label className="field-label">Additional information</label>
+            <textarea value={form.info} onChange={e=>setForm({...form,info:e.target.value})} rows={3} className="field-input" />
+          </div>
         </div>
-        <button type="submit" className="btn-primary">Request assessment</button>
+        <button type="submit" className="btn-primary">Submit</button>
         {status && <div className="text-[var(--text)] text-sm mt-3">{status}</div>}
       </form>
     </div>

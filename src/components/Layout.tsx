@@ -1,10 +1,27 @@
 import React from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export function Layout() {
   const [open, setOpen] = React.useState(false)
   const loc = useLocation()
+  const headerRef = React.useRef<HTMLElement>(null)
+  React.useEffect(() => {
+    const h = headerRef.current
+    if (!h) return
+    const st = ScrollTrigger.create({
+      start: 'top -80',
+      onUpdate: (self) => {
+        if (self.direction === 1) h.classList.add('scrolled')
+        else if (window.scrollY < 80) h.classList.remove('scrolled')
+      },
+    })
+    return () => st.kill()
+  }, [])
   const nav = [
     { to: '/services', label: 'Services' },
     { to: '/about', label: 'About' },
@@ -12,7 +29,7 @@ export function Layout() {
   ]
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="sticky top-0 z-50 backdrop-blur bg-black/80 border-b border-[#2a2a2e]">
+      <header ref={headerRef} className="sticky top-0 z-50 backdrop-blur bg-black/80 border-b border-[#2a2a2e] transition-all duration-300 [&.scrolled]:h-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-32 flex flex-col md:flex-row items-center justify-between relative">
           <Link to="/" className="flex items-center z-10">
             <img src="/headerlogo-small.png" alt="Steed Systems" className="h-24 w-auto object-contain" />
