@@ -37,4 +37,5 @@ h1,h2,h3,h4 { font-family: 'Rajdhani', system-ui, sans-serif; letter-spacing: 0.
 .btn-secondary { border: 1px solid var(--border); color: var(--text); padding: .75rem 1.5rem; border-radius: 8px; font-weight: 600; transition: border-color .15s, background .15s; }
 .btn-secondary:hover { border-color: var(--accent); background: rgba(225,29,72,.08); }
 
-.glow { text-shadow: 0 0 24px rgba(225,29,72,.45); }
+.hero-word { opacity: 0; }
+header.scrolled { background: #0a0a0b; }
