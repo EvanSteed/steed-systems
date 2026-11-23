@@ -2,6 +2,7 @@ import React from 'react'
 export default function Contact() {
   const [form, setForm] = React.useState({ name:'', business:'', email:'', phone:'', website:'', services:'', budget:'', desc:'' })
   const [status, setStatus] = React.useState<string|null>(null)
+  const [submitting, setSubmitting] = React.useState(false)
   const [errors, setErrors] = React.useState<Record<string,string>>({})
   const validate = () => {
     const e: Record<string,string> = {}
@@ -12,14 +13,19 @@ export default function Contact() {
   }
   const submit = async (ev: React.FormEvent) => {
     ev.preventDefault()
+    if (submitting) return
     const e = validate()
     setErrors(e)
     if (Object.keys(e).length) return
+    setSubmitting(true)
     try {
       await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
       setStatus('Thanks! Your enquiry has been received.')
+      setForm({ name:'', business:'', email:'', phone:'', website:'', services:'', budget:'', desc:'' })
     } catch {
       setStatus('Sorry, something went wrong.')
+    } finally {
+      setSubmitting(false)
     }
   }
   const field = (k: keyof typeof form, label: string, type='text', required=false) => (
@@ -48,7 +54,7 @@ export default function Contact() {
           <textarea value={form.desc} onChange={e=>setForm({...form,desc:e.target.value})} rows={4} className="field-input" />
           {errors.desc && <div className="field-error">{errors.desc}</div>}
         </div>
-        <button type="submit" className="btn-primary">Send enquiry</button>
+        <button type="submit" disabled={submitting} className="btn-primary">{submitting?'Submitting...':'Submit'}</button>
         {status && <div className="text-[var(--text)] text-sm mt-3">{status}</div>}
       </form>
     </div>
