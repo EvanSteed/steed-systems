@@ -22,6 +22,25 @@ export default function Home() {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const heading = document.querySelector<HTMLElement>('.hero-heading')
+      if (heading && !heading.querySelector('.hero-word')) {
+        const words = heading.textContent!.trim().split(/\s+/)
+        heading.innerHTML = words.map(w => `<span class="hero-word inline-block">${w}</span>`).join(' ')
+      }
+
+      gsap.set('.hero-word', { opacity: 0, y: 20 })
+      gsap.set('.hero-subtext', { opacity: 0, y: 20 })
+
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+      tl.to('.logo-a', { opacity: 0, scale: 1.15, duration: 2 }, 0.2)
+      tl.to('.logo-b', { opacity: 1, scale: 1, duration: 2 }, 0.2)
+      tl.from('.hero-word', { opacity: 0, y: 20, stagger: 0.04, duration: 0.45 }, 0.5)
+      tl.to('.hero-subtext', { opacity: 1, y: 0, duration: 0.5 }, 1)
+
+      gsap.to('.logo-a', { opacity: 1, scale: 1, duration: 2, repeat: -1, yoyo: true, ease: 'power2.inOut', delay: 1.5 })
+      gsap.to('.logo-b', { opacity: 0, scale: 1.15, duration: 2, repeat: -1, yoyo: true, ease: 'power2.inOut', delay: 1.5 })
+
       gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
         gsap.from(el, { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } })
       })
@@ -30,8 +49,6 @@ export default function Home() {
         start: 'top 88%',
       })
       gsap.set('.card', { opacity: 0, scale: 0.96, y: 20 })
-      gsap.to('.logo-a', { opacity: 0, duration: 2.2, repeat: -1, yoyo: true, ease: 'power2.inOut' })
-      gsap.to('.logo-b', { opacity: 1, duration: 2.2, repeat: -1, yoyo: true, ease: 'power2.inOut' })
     }, ref)
     return () => ctx.revert()
   }, [])
@@ -39,12 +56,13 @@ export default function Home() {
     <div ref={ref}>
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-8 text-center">
-          <h1 className="text-6xl sm:text-7xl leading-tight mb-6 font-bold">It's time to update your business.</h1>
+          <h1 className="text-6xl sm:text-7xl leading-tight mb-6 font-bold hero-heading">It's time to update your business.</h1>
+          <h2 className="text-5xl sm:text-6xl font-bold mb-4">Your business deserves a better digital presence</h2>
           <div className="relative mx-auto mb-6 w-40 h-40">
             <img src="/logo.png" className="logo-a absolute inset-0 w-full h-full object-contain" alt="" />
             <img src="/logo2.png" className="logo-b absolute inset-0 w-full h-full object-contain opacity-0" alt="" />
           </div>
-          <p className="text-[var(--muted)] text-xl mb-4 max-w-2xl mx-auto">Helping local Perth businesses build a stronger online presence through website development, digital consulting and practical technology solutions.</p>
+          <p className="text-[var(--muted)] text-xl mb-4 max-w-2xl mx-auto hero-subtext">We take care of the digital side of your business, helping you improve visibility, streamline operations and create better customer experiences.</p>
         </div>
       </section>
 
